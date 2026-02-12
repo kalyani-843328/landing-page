@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Landing page  | Brinda Somaya</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  /* FADE UP ON SCROLL */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slight delay helpers (optional but beautiful) */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+/* -------- CUSTOM STYLES -------- */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+min-height:calc(100vh - 70px);
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  url("https://images.unsplash.com/photo-1503387762-592deb58ef4e") center/cover;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+.hero-content h1 {
+  font-size: 4.2rem;
+  font-weight: 900;          /* Maximum bold */
+  letter-spacing: 2px;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.6); /* Depth effect */
+}
+
+/* TRANSPARENT NAVBAR */
+.navbar-transparent {
+  background: transparent;
+  transition: all 0.4s ease;
+}
+
+/* Navbar text white on hero */
+.navbar-transparent .nav-link,
+.navbar-transparent .navbar-brand {
+  color: #fff !important;
+}
+
+/* On scroll navbar style */
+.navbar-scrolled {
+  background: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-brand {
+  color: #000 !important;
+}
+
+/* HERO CAROUSEL */
+.hero-carousel {
+  height: calc(100vh - 70px);
+  position: relative;
+}
+
+.hero-carousel .carousel,
+.hero-carousel .carousel-inner,
+.hero-carousel .carousel-item {
+  height: 100%;
+}
+
+.hero-slide {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Dark overlay */
+.hero-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+/* Hero content */
+.hero-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+}
+
+.hero-content p {
+  max-width: 800px;
+}
+
+/* ABOUT SECTION BACKGROUND */
+#about {
+  background: linear-gradient(
+              rgba(255,255,255,0.85),
+              rgba(255,255,255,0.85)
+            ),
+            url("a.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* VIDEO BACKGROUND SECTION */
+.video-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Video */
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+    filter: contrast(1.2) brightness(0.95);
+
+}
+
+/* Overlay for readability */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+    background: rgba(255,255,255,0.55);
+  z-index: 1;
+}
+#about p,
+#projects p {
+  color: #222;
+  font-size: 1.05rem;
+}
+
+/* Content above video */
+.video-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+}
+
+.section-title {
+  margin-bottom: 25px;
+}
+.project-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card .card-body {
+  flex-grow: 1;
+}
+
+/* PROJECTS SECTION */
+.project-card {
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  height: 100%;
+  background: #fff;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 40px rgba(0,0,0,0.15);
+}
+
+/* Image zoom */
+.project-card img {
+  height: 230px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Card body fixed height */
+.project-card .card-body {
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title */
+.project-card h5 {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* DOT DOT CONTENT */
+.project-card p {
+  color: #555;
+  font-size: 0.95rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;   /* 3 lines only */
+  -webkit-box-orient: vertical;
+}
+
+/* Read more */
+.project-card .read-more {
+  margin-top: auto;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #f4b400;
+  text-decoration: none;
+}
+
+.project-card .read-more:hover {
+  text-decoration: underline;
+}
+.article-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 18px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.article-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 15px;
+}
+
+.article-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+}
+
+/* DOT DOT TEXT */
+.article-card p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+/* ARTICLES SECTION */
+/* HORIZONTAL ARTICLE SCROLL (LIKE YOUTUBE) */
+.article-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar (optional – premium look) */
+.article-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.article-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.4);
+  border-radius: 10px;
+}
+
+/* Article card width */
+.article-card {
+  min-width: 320px;
+  max-width: 320px;
+  flex: 0 0 auto;
+}
+
+#articles .section-title {
+  color: #ffffff;      /* White */
+  font-weight: 700;    /* Bold */
+}
+
+#articles {
+  background: 
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("https://images.unsplash.com/photo-1499951360447-b19be8fe80f5") center/cover no-repeat;
+}
+
+#articles .p-4 {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.article-card {
+  border: none;
+  border-radius: 18px;
+  padding: 25px;
+  height: 100%;
+  background: #ffffff;
+  transition: all 0.35s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 35px rgba(0,0,0,0.15);
+}
+
+/* Article title */
+.article-card h5 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Meta text */
+.article-card .article-meta {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+/* DOT DOT CONTENT */
+.article-card p {
+  color: #555;
+  font-size: 0.95rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;   /* 4 lines only */
+  -webkit-box-orient: vertical;
+}
+
+/* Read link */
+.article-card .read-more {
+  display: inline-block;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #f4b400;
+  text-decoration: none;
+}
+
+.article-card .read-more:hover {
+  text-decoration: underline;
+}
+
+/* Horizontal YouTube Scroll */
+.video-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.video-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.video-scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.video-card {
+  min-width: 320px;
+  flex: 0 0 auto;
+}
+
+.bg-dark-custom {
+  background-color: #111;
+}
+
+footer {
+  background: #000;
+  color: #aaa;
+}
+
+/* Contact Section Styling */
+#contact .card {
+  background: rgba(255,255,255,0.95);
+}
+
+
+
+#contact .input-group-text {
+  background: #f4f4f4;
+  border: none;
+}
+
+#contact .form-control,
+#contact .form-select {
+  border: none;
+  box-shadow: none;
+  background: #f9f9f9;
+}
+
+#contact .form-control:focus,
+#contact .form-select:focus {
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(255,193,7,0.3);
+}
+
+.contact-btn {
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #000;
+  color: #fff;
+  transform: translateY(-2px);
+}
+/* Contact Section Background */
+#contact {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url("p.jpg") center/cover no-repeat;
+  color: #fff;
+}
+/* ===== LOGO / NAME LOADER ===== */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.loader-content {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.loader-content h1 {
+  font-size: 2.2rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.loader-content span {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: #777;
+}
+
+/* Line animation */
+.loader-line {
+  width: 160px;
+  height: 2px;
+  background: #e0e0e0;
+  margin: 20px auto 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-line::before {
+  content: "";
+  position: absolute;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  background: #000;
+  animation: loaderMove 1.3s infinite ease-in-out;
+}
+
+@keyframes loaderMove {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
+
+.loading-text {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: #999;
+}
+
+</style>
+</head>
+
+
+<body>
+<!-- LOGO / NAME LOADER -->
+<div id="page-loader">
+  <div class="loader-content">
+    <h1>Brinda Somaya</h1>
+    <span>Architects</span>
+
+    <div class="loader-line"></div>
+    <p class="loading-text">Loading…</p>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark navbar-transparent">
+
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Brinda Somaya</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item">
+  <a class="nav-link" href="articles.html">Articles</a>
+</li>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO CAROUSEL -->
+<section class="hero-carousel">
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active hero-slide"
+           style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e');">
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item hero-slide"
+           style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');">
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item hero-slide"
+           style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c');">
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="carousel-item hero-slide"
+           style="background-image:url('https://images.unsplash.com/photo-1529429617124-95b109e86bb8');">
+      </div>
+
+    </div>
+
+    <!-- HERO CONTENT (same for all slides) -->
+    <div class="hero-content text-center">
+<h1 class="fade-up delay-1">
+  Designing spaces that inspire life.
+</h1>
+      <p class="lead">
+        Architect • Urban Designer • Sustainable Visionary • Social & Community Design
+      </p>
+      <a href="#projects" class="btn btn-warning px-4 py-2 mt-3">
+        View Portfolio
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-5 video-section">
+  
+  <!-- Background Video -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="ac.mp4" type="video/mp4">
+  </video>
+
+  <!-- Overlay -->
+  <div class="video-overlay"></div>
+
+  <!-- Content -->
+  <div class="container position-relative">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h2 class="section-title">About the Architect</h2>
+        <p>
+          Brinda Somaya (born June 28, 1949) is a preeminent Indian architect, urban conservationist, and author known for bridging contemporary design with historical heritage. She is the founder and principal architect of Somaya and Kalappa Consultants (SNK), established in Mumbai in 1978.
+
+
+        </p>
+      </div>
+      <div class="col-md-6">
+        <img src="download.jpeg" class="img-fluid rounded fade-up delay-2">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- PROJECTS -->
+ <section id="projects" class="py-5 video-section">
+
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="ac.mp4" type="video/mp4">
+  </video>
+
+  <div class="video-overlay"></div>
+
+    <div class="container position-relative">
+    <h2 class="section-title text-center">Selected Projects</h2>
+<div class="row g-4 align-items-stretch">
+      <div class="col-md-4">
+<div class="card project-card h-100">
+          <img src="download1.jpeg" class="card-img-top">
+          <div class="card-body">
+            <h5>Historical Restoration & Conservation
+</h5>
+<p>Somaya is a leading figure in Indian urban conservation, specializing in preserving 19th-century colonial and 20th-century modern heritage. 
+</p>          </div>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up delay-1">
+
+        <div class="card project-card">
+          <img src="unnamed.jpg" class="card-img-top">
+          <div class="card-body">
+            <h5>Institutional & Educational Campuses
+</h5>
+            <p>Her institutional designs often feature "courtyard" planning and sustainable material choices like local brick. 
+</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card project-card">
+          <img src="aquapraca-floating-plaza-carlo-ratti-associati-plus-howeler-plus-yoon-architecture_3.jpg" class="card-img-top">
+          <div class="card-body">
+            <h5>Social & Community Design
+</h5>
+            <p>These projects reflect Somaya’s belief in the architect’s role as a "guardian" of the community. 
+.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Moving Carousel (Auto Sliding)-->
+
+<section class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">Featured Works</h2>
+
+<div id="workCarousel"
+     class="carousel slide carousel-fade"
+     data-bs-ride="carousel"
+     data-bs-interval="3000"
+     data-bs-pause="false">
+
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img src="download1.jpeg" class="d-block w-100 rounded" height="400">
+    </div>
+
+    <div class="carousel-item">
+      <img src="unnamed.jpg" class="d-block w-100 rounded" height="400">
+    </div>
+
+    <div class="carousel-item">
+      <img src="aquapraca-floating-plaza-carlo-ratti-associati-plus-howeler-plus-yoon-architecture_3.jpg"
+           class="d-block w-100 rounded" height="400">
+    </div>
+
+  </div>
+</div>
+</section>
+<!-- ARTICLES (HORIZONTAL SCROLL LIKE YOUTUBE) -->
+<section id="articles" class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center fade-up">
+      Articles & Publications
+    </h2>
+
+    <div class="article-scroll fade-up delay-1">
+
+      <!-- Article Card 1 -->
+      <div class="article-card">
+        <img src="s.jpg" alt="">
+        <h5>StadtBauwelt</h5>
+        <div class="article-meta">July 2025</div>
+        <p>
+          Somaya was featured in the “Made in India” issue discussing
+          challenges of building for a billion people.
+        </p>
+        <a href="#" class="read-more">Read →</a>
+      </div>
+
+      <!-- Article Card 2 -->
+      <div class="article-card">
+        <img src="artical.png" alt="">
+        <h5>ArchDaily</h5>
+        <div class="article-meta">March 2025</div>
+        <p>
+          Building Appropriately explores how Brinda Somaya connects
+          generations of Indian architecture.
+        </p>
+        <a href="#" class="read-more">Read →</a>
+      </div>
+
+      <!-- Article Card 3 -->
+      <div class="article-card">
+        <img src="sk.jpg" alt="">
+        <h5>Urban India</h5>
+        <div class="article-meta">Jan 2025</div>
+        <p>
+          A deep dive into sustainable urban planning and community-led
+          architectural design.
+        </p>
+        <a href="#" class="read-more">Read →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!--horizontal scrolling cards-->
+<!-- YOUTUBE VIDEOS -->
+<section class="py-5 bg-light ">
+  <div class="container">
+    <h2 class="section-title text-center">YouTube Videos</h2>
+
+    <div class="video-scroll">
+      <!-- Video Card 1 -->
+       <div class="card video-card shadow-sm fade-up delay-1">
+
+        <iframe height="200"
+          src="https://www.youtube.com/embed/VIDEO_ID_1"
+          title="YouTube video"
+          allowfullscreen>
+        </iframe>
+        <div class="card-body">
+          <h6 class="card-title">Architecture & Heritage</h6>
+        </div>
+      </div>
+
+      <!-- Video Card 2 -->
+       <div class="card video-card shadow-sm fade-up delay-1">
+
+        <iframe height="200"
+          src="https://www.youtube.com/embed/VIDEO_ID_2"
+          title="YouTube video"
+          allowfullscreen>
+        </iframe>
+        <div class="card-body">
+          <h6 class="card-title">Urban Design Talk</h6>
+        </div>
+      </div>
+
+      <!-- Video Card 3 -->
+       <div class="card video-card shadow-sm fade-up delay-1">
+
+        <iframe height="200"
+          src="https://www.youtube.com/embed/VIDEO_ID_3"
+          title="YouTube video"
+          allowfullscreen>
+        </iframe>
+        <div class="card-body">
+          <h6 class="card-title">Sustainable Architecture</h6>
+        </div>
+      </div>
+      <!--Video card 4-->
+      <div class="card video-card shadow-sm fade-up delay-1">
+
+        <iframe height="200"
+          src="https://www.youtube.com/embed/VIDEO_ID_3"
+          title="YouTube video"
+          allowfullscreen>
+        </iframe>
+        <div class="card-body">
+          <h6 class="card-title">Social & Community Design
+</h6>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="bg-dark-custom text-white py-5 ">
+  <div class="container text-center">
+    <h2 class="section-title">Client Testimonials</h2>
+    <p class="lead">
+      “Somaya transformed our vision into a timeless architectural masterpiece.”
+    </p>
+  </div>
+</section>
+<!-- CONTACT (3 PART SECTION) -->
+<section id="contact" class="pt-5 pb-4 bg-light min-vh-100">
+  <div class="container">
+
+    <h2 class="section-title text-center">Get in Touch</h2>
+    <p class="text-center text-white mb-4">
+      <b>Let’s connect and discuss your ideas or collaborations</b>
+    </p>
+
+    <div class="row g-4 align-items-stretch">
+
+      <!-- PART 1: CONTACT INFO -->
+       <div class="col-md-4 fade-up delay-1">
+
+        <div class="card h-100 shadow-sm border-0 rounded-4 p-4">
+          <h5 class="fw-bold mb-3">Contact Info</h5>
+
+          <p><i class="fa fa-map-marker-alt text-warning me-2"></i>
+            Mumbai, India
+          </p>
+
+          <p><i class="fa fa-phone text-warning me-2"></i>
+            +91 98765 43210
+          </p>
+
+          <p><i class="fa fa-envelope text-warning me-2"></i>
+            contact@brindasomaya.com
+          </p>
+
+          <hr>
+
+          <p class="text-muted small mb-0">
+            Available Mon – Fri, 10:00 AM – 6:00 PM
+          </p>
+        </div>
+      </div>
+
+      <!-- PART 2: CONTACT FORM -->
+       <div class="col-md-4 fade-up delay-1">
+
+        <div class="card h-100 shadow-lg border-0 rounded-4 p-4">
+
+          <h5 class="fw-bold mb-3">Send a Message</h5>
+
+          <form>
+            <div class="input-group mb-3">
+              <span class="input-group-text"><i class="fa fa-user"></i></span>
+              <input type="text" class="form-control" placeholder="Your Name">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+              <input type="email" class="form-control" placeholder="Email Address">
+            </div>
+<div class="input-group mb-3">
+  <span class="input-group-text"><i class="fa fa-phone"></i></span>
+  <input type="tel" class="form-control" placeholder="Phone Number">
+</div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text"><i class="fa fa-list"></i></span>
+              <select class="form-select">
+                <option selected disabled>Select Purpose</option>
+                <option>General Inquiry</option>
+                <option>Project Consultation</option>
+                <option>Collaboration</option>
+                <option>Feedback</option>
+              </select>
+            </div>
+
+            <textarea class="form-control mb-3" rows="3" placeholder="Your Message"></textarea>
+
+            <button class="btn btn-warning w-100 fw-bold">
+              Send Message
+            </button>
+          </form>
+
+        </div>
+      </div>
+
+      <!-- PART 3: SOCIAL / QUICK CONNECT -->
+       <div class="col-md-4 fade-up delay-1">
+
+        <div class="card h-100 shadow-sm border-0 rounded-4 p-4 text-center">
+
+          <h5 class="fw-bold mb-3">Quick Connect</h5>
+
+          <p class="text-muted mb-4">
+            Follow or message us directly
+          </p>
+
+          <div class="d-flex justify-content-center gap-3 mb-4">
+            <a href="#" class="text-dark fs-4"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-dark fs-4"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-dark fs-4"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-dark fs-4"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-dark fs-4"><i class="fab fa-twitter"></i></a>
+
+          </div>
+
+          <a href="#" class="btn btn-outline-success w-100 mb-2">
+            <i class="fab fa-whatsapp me-2"></i> WhatsApp
+          </a>
+
+          <p class="small text-muted mb-0">
+            Live chat available at bottom right
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="py-4 text-center">
+  <p>© 2025 Brinda Somaya Architects | All Rights Reserved</p>
+
+</footer>
+<!--
+<footer class="py-5 text-center text-light" style="background:#000;">
+  <div class="container">
+
+    <h5 class="fw-bold mb-3">Quick Connect</h5>
+
+    <div class="d-flex justify-content-center gap-4 mb-3">
+      <a href="#" class="text-light fs-4"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="text-light fs-4"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="text-light fs-4"><i class="fab fa-linkedin"></i></a>
+      <a href="#" class="text-light fs-4"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="text-light fs-4"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <a href="#" class="btn btn-outline-success px-4 mb-3">
+      <i class="fab fa-whatsapp me-2"></i> WhatsApp
+    </a>
+
+    <p class="small text-muted mt-3 mb-0">
+      © 2025 Brinda Somaya Architects | All Rights Reserved
+    </p>
+
+  </div>
+</footer>
+-->
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Auto Moving Carousel -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Tawk.to Live Chat -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6943c8443c4dd9197bdf5083/1jcoccjjs';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  new bootstrap.Carousel('#heroCarousel', {
+    interval: 4000,   // 4 seconds
+    ride: 'carousel',
+    pause: false
+  });
+});
+</script>
+
+<script>
+window.addEventListener('scroll', function () {
+  const navbar = document.querySelector('.navbar');
+
+  if (window.scrollY > 80) {
+    navbar.classList.add('navbar-scrolled');
+  } else {
+    navbar.classList.remove('navbar-scrolled');
+  }
+});
+</script>
+<script>
+const fadeElements = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.15 });
+
+fadeElements.forEach(el => observer.observe(el));
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const videos = document.querySelectorAll(".bg-video");
+    videos.forEach(video => {
+      video.playbackRate = 1.25; // 1.0 = normal
+    });
+  });
+</script>
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("page-loader");
+
+  loader.style.transition = "opacity 0.6s ease";
+  loader.style.opacity = "0";
+
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 600);
+});
+</script>
+
+</body>
+</html>
