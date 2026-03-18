@@ -5,7 +5,7 @@ A modern and responsive architecture portfolio website built with HTML & CSS.
 ---
 
 ## 🚀 Live Demo
-🔗 [View Live Project](https://brilliant-jalebi-6c281d.netlify.app)
+🔗 [View Live Project](https://candid-stroopwafel-c3931d.netlify.app)
 
 ---
 
