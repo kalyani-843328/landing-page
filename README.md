@@ -5,7 +5,7 @@ A modern and responsive architecture portfolio website built with HTML & CSS.
 ---
 
 ## 🚀 Live Demo
-🔗 [View Live Project](https://candid-stroopwafel-c3931d.netlify.app)
+🔗 [View Live Project](https://landing-page-rouge-one-63.vercel.app/)
 
 ---
 
